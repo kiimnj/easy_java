@@ -19,8 +19,9 @@ public class GenericClass1Demo {
 
     c.setBeverage(new Beer());
     Beer beer = (Beer) c.getBeverage();
+//    Boricha beer = (Boricha) c.getBeverage(); //<T extends Beverage> - Boricha로 강제형변환후 Beer메서드 사용하면 익셉션
     c.setBeverage(new Beverage());
-    c.setBeverage(new Object());
+    c.setBeverage(new Object()); //<T extends Beverage> - 컴파일 에러
 //    beer = (Beer) c.getBeverage(); //ClassCastException
 
     Cup<Boricha> borichaCup = new Cup<>();
@@ -46,7 +47,7 @@ class Beer extends Beverage{}
 //  }
 //}
 
-class Cup<T>{
+class Cup<T>{ //<T extends Beverage>
   private T beverage;
   public T getBeverage(){
     return beverage;
